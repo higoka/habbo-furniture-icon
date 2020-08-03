@@ -1,5 +1,5 @@
 # habbo-furniture-icon
-A small script to create furniture icons
+A small script to create colored furniture icons from swfs
 
 ## Requirements
 - JRE 8
