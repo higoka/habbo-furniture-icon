@@ -33,7 +33,9 @@ function createIcon(string $itemName): void {
 
     $layerCount = (int) $visualization->attributes()->layerCount;
 
-    $colorMap = [];
+    $colorMap = [
+        0 => [],
+    ];
 
     foreach ($visualization->xpath('//visualization[@size=1]//colors/color') as $color) {
         $colorId = (int) $color->attributes()->id;
@@ -65,7 +67,7 @@ function createIcon(string $itemName): void {
             $asset = $assets->xpath("//asset[@name='{$assetName}']")[0];
 
             if (empty($asset)) {
-              exit("error parsing asset for \"{$itemName}\"");
+                exit("error parsing asset for \"{$itemName}\"");
             }
 
             $src = imagecreatefrompng($path);
