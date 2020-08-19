@@ -28,7 +28,8 @@ function createIcon(string $itemName): void {
     $assets        = simplexml_load_file($binAssets[0]);
 
     if (empty($visualization) || empty($assets)) {
-        exit("error parsing xml for \"{$itemName}\"");
+        echo "error parsing xml for \"{$itemName}\"\n";
+        continue;
     }
 
     $layerCount = (int) $visualization->attributes()->layerCount;
@@ -60,14 +61,16 @@ function createIcon(string $itemName): void {
             $path = glob("tmp/images/*_icon_{$char}.png")[0];
 
             if (empty($path)) {
-                exit("cannot find icon for \"{$itemName}\"");
+                echo "cannot find icon for \"{$itemName}\"\n";
+                continue;
             }
 
             $assetName = substr(preg_replace("~tmp/images/\d+_{$itemName}_~i", '', $path), 0, -4);
             $asset = $assets->xpath("//asset[@name='{$assetName}']")[0];
 
             if (empty($asset)) {
-                exit("error parsing asset for \"{$itemName}\"");
+                echo "error parsing asset for \"{$itemName}\"\n";
+                continue;
             }
 
             $src = imagecreatefrompng($path);
