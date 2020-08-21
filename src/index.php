@@ -117,3 +117,5 @@ function colorize($src, int $w, int $h, string $color) {
 
     return $src;
 }
+
+exit('done');
