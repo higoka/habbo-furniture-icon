@@ -29,7 +29,7 @@ function createIcon(string $itemName): void {
 
     if (empty($visualization) || empty($assets)) {
         echo "error parsing xml for \"{$itemName}\"\n";
-        continue;
+        return;
     }
 
     $layerCount = (int) $visualization->attributes()->layerCount;
